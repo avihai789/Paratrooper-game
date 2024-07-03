@@ -1,0 +1,17 @@
+﻿{
+    "levelsData": [
+        {
+            "levelName": "1",
+            "coinsToSpawn": 200,
+            "coinsToCollect": 15,
+            "time": 60
+        },
+        {
+            "levelName": "2",
+            "coinsToSpawn": 200,
+            "coinsToCollect": 50,
+            "time": 90
+        }
+    ]
+
+}
