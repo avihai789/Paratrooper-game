@@ -569,6 +569,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8944336655422409503, guid: f6d148d888ffbf54b9afe9936dfaec1f, type: 3}
   m_PrefabInstance: {fileID: 54571708}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1040696289
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1040696291}
+  - component: {fileID: 1040696290}
+  m_Layer: 0
+  m_Name: Presenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1040696290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040696289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 549bf16e654f04361a94c4340c1bc2e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _terrain: {fileID: 6072827839480702117}
+  _coinPrefab: {fileID: 4778014507286559951, guid: 0520d2f56dc8244f9be4e64ae69f0ad5, type: 3}
+  coinsParent: {fileID: 6072827839480702116}
+--- !u!4 &1040696291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1040696289}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 42.25798, y: 18.874048, z: 32.90848}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1270520520
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -734,6 +781,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _settings: {fileID: 11400000, guid: c076afb04077641b2909057911d09de9, type: 2}
+  _presenter: {fileID: 1040696290}
 --- !u!4 &1430029821
 Transform:
   m_ObjectHideFlags: 0
@@ -848,6 +896,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5fd75ac5fe08469e87fd03b2d29efac, type: 3}
+--- !u!4 &6072827839480702116 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7107993081738732491, guid: c5fd75ac5fe08469e87fd03b2d29efac, type: 3}
+  m_PrefabInstance: {fileID: 6072827839480702115}
+  m_PrefabAsset: {fileID: 0}
+--- !u!218 &6072827839480702117 stripped
+Terrain:
+  m_CorrespondingSourceObject: {fileID: 4461471138367297381, guid: c5fd75ac5fe08469e87fd03b2d29efac, type: 3}
+  m_PrefabInstance: {fileID: 6072827839480702115}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -857,3 +915,4 @@ SceneRoots:
   - {fileID: 1430029821}
   - {fileID: 1915585004}
   - {fileID: 6072827839480702115}
+  - {fileID: 1040696291}
