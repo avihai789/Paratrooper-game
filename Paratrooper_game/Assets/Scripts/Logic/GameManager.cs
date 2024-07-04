@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     private int coinsCollected;
     
     public static GameManager Instance;
-
+    
 
     private void Awake()
     {
@@ -52,6 +52,7 @@ public class GameManager : MonoBehaviour
     {
         _presenter.CoinSpawned += CoinSpawned;
         _presenter.SpawnCoins(_currentLevelData);
+        _presenter.SetCoinsText(coinsCollected, coinsToCollect);
     }
 
     private void CoinSpawned(Coin coin)
@@ -63,6 +64,8 @@ public class GameManager : MonoBehaviour
     {
         Destroy(coin.gameObject);
         coinsCollected++;
+        _presenter.SetCoinsText(coinsCollected, coinsToCollect);
+        
         if (coinsCollected == coinsToCollect)
         {
             Debug.Log("Level completed");

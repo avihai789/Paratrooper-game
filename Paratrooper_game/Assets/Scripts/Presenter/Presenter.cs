@@ -1,17 +1,19 @@
 using System;
 using System.Collections.Generic;
 using Paratrooper.Config;
+using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Presenter : MonoBehaviour
 {
-    [SerializeField] private Terrain _terrain;
     [SerializeField] private Coin _coinPrefab;
+    [SerializeField] private Terrain _terrain;
     [SerializeField] private Transform coinsParent;
+    [SerializeField] private TextMeshProUGUI _coinsText;
 
     private List<Coin> _coinsList;
-    
+
     public event Action<Coin> CoinSpawned;
 
     private void Start()
@@ -27,6 +29,11 @@ public class Presenter : MonoBehaviour
         }
     }
 
+    public void SetCoinsText(int coinsCollected, int coinstoCollect)
+    {
+        _coinsText.text = $"{coinsCollected}/{coinstoCollect}";
+    }
+
     public void SpawnCoin()
     {
         float x = Random.Range(0, _terrain.terrainData.size.x);
@@ -39,7 +46,7 @@ public class Presenter : MonoBehaviour
         Vector3 spawnPosition = new Vector3(x, y, z);
         var coin = Instantiate(_coinPrefab, spawnPosition, Quaternion.identity, coinsParent);
         CoinSpawned?.Invoke(coin);
-        
+
         _coinsList.Add(coin);
     }
 }
