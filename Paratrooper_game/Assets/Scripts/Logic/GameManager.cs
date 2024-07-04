@@ -10,9 +10,11 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Settings _settings;
     [SerializeField] private Presenter _presenter;
     
+    private TimerLogic _timer;
+    
     private int _currentLevel;
-    private int coinsToCollect;
-    private int coinsCollected;
+    private int _coinsToCollect;
+    private int _coinsCollected;
     
     public static GameManager Instance;
     
@@ -36,23 +38,42 @@ public class GameManager : MonoBehaviour
         StartLevel(_settings.Config.levelsData[_currentLevel - 1]);
     }
     
-    private void StartLevel(Config.LevelData _currentLevelData)
+    private void Update()
     {
-        InitCoins(_currentLevelData);
+        _timer.Update(Time.deltaTime);
     }
     
-    private void InitCoins(Config.LevelData _currentLevelData)
+    private void StartLevel(Config.LevelData currentLevelData)
     {
-        coinsToCollect = _currentLevelData.coinsToCollect;
-        coinsCollected = 0;
-        SpawnCoins(_currentLevelData);
+        InitCoins(currentLevelData);
+        InitTimer(currentLevelData.time);
+    }
+    private void InitTimer(int time)
+    {
+        _timer = new TimerLogic(time);
+        _timer.TimerEnd += TimerEnd;
+        _timer.TimerChanged += (time) => _presenter.SetTimerText(time);
+    }
+
+    private void TimerEnd()
+    {
+        _timer.StopTimer();
+        _timer.TimerChanged -= (time) => _presenter?.SetTimerText(time);
+        Debug.Log("Level failed");
+    }
+
+    private void InitCoins(Config.LevelData currentLevelData)
+    {
+        _coinsToCollect = currentLevelData.coinsToCollect;
+        _coinsCollected = 0;
+        SpawnCoins(currentLevelData);
     }
     
-    private void SpawnCoins(Config.LevelData _currentLevelData)
+    private void SpawnCoins(Config.LevelData currentLevelData)
     {
         _presenter.CoinSpawned += CoinSpawned;
-        _presenter.SpawnCoins(_currentLevelData);
-        _presenter.SetCoinsText(coinsCollected, coinsToCollect);
+        _presenter.SpawnCoins(currentLevelData);
+        _presenter.SetCoinsText(_coinsCollected, _coinsToCollect);
     }
 
     private void CoinSpawned(Coin coin)
@@ -63,10 +84,10 @@ public class GameManager : MonoBehaviour
     private void CoinCollected(Coin coin)
     {
         Destroy(coin.gameObject);
-        coinsCollected++;
-        _presenter.SetCoinsText(coinsCollected, coinsToCollect);
+        _coinsCollected++;
+        _presenter.SetCoinsText(_coinsCollected, _coinsToCollect);
         
-        if (coinsCollected == coinsToCollect)
+        if (_coinsCollected == _coinsToCollect)
         {
             Debug.Log("Level completed");
         }

@@ -10,6 +10,7 @@ public class Presenter : MonoBehaviour
     [SerializeField] private Coin _coinPrefab;
     [SerializeField] private Terrain _terrain;
     [SerializeField] private Transform coinsParent;
+    [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private TextMeshProUGUI _coinsText;
 
     private List<Coin> _coinsList;
@@ -32,6 +33,11 @@ public class Presenter : MonoBehaviour
     public void SetCoinsText(int coinsCollected, int coinstoCollect)
     {
         _coinsText.text = $"{coinsCollected}/{coinstoCollect}";
+    }
+    
+    public void SetTimerText(float time)
+    {
+        _timerText.text = time.ToString("F2");
     }
 
     public void SpawnCoin()

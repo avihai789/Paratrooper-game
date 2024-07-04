@@ -384,6 +384,7 @@
 "Assets/Scripts/Config/ConfigLoader.cs"
 "Assets/Scripts/Logic/GameManager.cs"
 "Assets/Scripts/Logic/Settings.cs"
+"Assets/Scripts/Logic/TimerLogic.cs"
 "Assets/Scripts/Presenter/Coin.cs"
 "Assets/Scripts/Presenter/Menu.cs"
 "Assets/Scripts/Presenter/Presenter.cs"
