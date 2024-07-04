@@ -1,12 +1,24 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LevelEnd : MonoBehaviour
 {
-    public void OnClick()
+    [SerializeField] private LevelWin levelWin;
+    [SerializeField] private LevelFail levelFail;
+    [SerializeField] private Settings settings;
+    
+    
+    public void Start()
     {
-        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        if (settings.isLevelWon)
+        {
+            levelWin.gameObject.SetActive(true);
+            levelWin.SetData(settings.currentLevel, settings.Config.levelsData.Length);
+        }
+        else
+        {
+            levelFail.gameObject.SetActive(true);
+        }
     }
 }

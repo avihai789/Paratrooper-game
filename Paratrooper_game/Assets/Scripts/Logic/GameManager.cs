@@ -11,10 +11,13 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Presenter _presenter;
     
     private TimerLogic _timer;
+    private coinsLogic _coinsLogic;
     
     private int _currentLevel;
     private int _coinsToCollect;
     private int _coinsCollected;
+    
+    public const int MAX_LEVEL = 2;
     
     public static GameManager Instance;
     
@@ -60,6 +63,7 @@ public class GameManager : MonoBehaviour
         _timer.StopTimer();
         _timer.TimerEnd -= TimerEnd;
         _timer.TimerChanged -= (time) => _presenter?.SetTimerText(time);
+        _settings.isLevelWon = false;
         SceneManager.LoadScene("LevelEnd", LoadSceneMode.Single);
     }
 
@@ -90,7 +94,10 @@ public class GameManager : MonoBehaviour
         
         if (_coinsCollected == _coinsToCollect)
         {
-            Debug.Log("Level completed");
+            _timer.StopTimer();
+            _settings.isLevelWon = true;
+            _settings.currentLevel++;
+            SceneManager.LoadSceneAsync("LevelEnd", LoadSceneMode.Single);
         }
     }
 }
