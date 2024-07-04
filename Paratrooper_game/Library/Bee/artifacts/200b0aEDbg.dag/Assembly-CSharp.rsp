@@ -386,6 +386,7 @@
 "Assets/Scripts/Logic/Settings.cs"
 "Assets/Scripts/Logic/TimerLogic.cs"
 "Assets/Scripts/Presenter/Coin.cs"
+"Assets/Scripts/Presenter/LevelEnd.cs"
 "Assets/Scripts/Presenter/Menu.cs"
 "Assets/Scripts/Presenter/Presenter.cs"
 "Assets/Starter Assets/TutorialInfo/Scripts/Readme.cs"

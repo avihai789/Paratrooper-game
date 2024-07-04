@@ -58,8 +58,9 @@ public class GameManager : MonoBehaviour
     private void TimerEnd()
     {
         _timer.StopTimer();
+        _timer.TimerEnd -= TimerEnd;
         _timer.TimerChanged -= (time) => _presenter?.SetTimerText(time);
-        Debug.Log("Level failed");
+        SceneManager.LoadScene("LevelEnd", LoadSceneMode.Single);
     }
 
     private void InitCoins(Config.LevelData currentLevelData)
