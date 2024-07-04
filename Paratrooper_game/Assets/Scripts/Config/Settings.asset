@@ -13,5 +13,13 @@ MonoBehaviour:
   m_Name: Settings
   m_EditorClassIdentifier: 
   Config:
-    levelsData: []
+    levelsData:
+    - levelName: 1
+      coinsToSpawn: 200
+      coinsToCollect: 15
+      time: 10
+    - levelName: 2
+      coinsToSpawn: 200
+      coinsToCollect: 50
+      time: 90
   currentLevel: 1
