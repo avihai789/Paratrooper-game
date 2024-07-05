@@ -32,6 +32,7 @@ public class Presenter : MonoBehaviour
     {
         _plane.SpawnPlayer -= SpawnPlayer;
         _player.SetActive(true);
+        _player.transform.position = _plane.transform.position;
         _playerCamera.Follow = _playerCameraRoot;
     }
 

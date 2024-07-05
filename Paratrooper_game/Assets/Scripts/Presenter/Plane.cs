@@ -15,7 +15,7 @@ public class Plane : MonoBehaviour
 
     private void Fly()
     {
-        transform.DOMove(new Vector3(40, 30, 50), 4).onComplete += () =>
+        transform.DOMove(new Vector3(40, 30, 50), 4).SetEase(Ease.Linear).onComplete += () =>
         {
             FlySecondHalf();
             SpawnPlayer?.Invoke();
