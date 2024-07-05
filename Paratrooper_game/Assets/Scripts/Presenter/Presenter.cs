@@ -22,9 +22,9 @@ public class Presenter : MonoBehaviour
         _coinsList = new List<Coin>();
     }
 
-    public void SpawnCoins(Config.LevelData _currentLevelData)
+    public void SpawnCoins(int coinsToSpawn)
     {
-        for (var i = 0; i < _currentLevelData.coinsToSpawn; i++)
+        for (var i = 0; i < coinsToSpawn; i++)
         {
             SpawnCoin();
         }
