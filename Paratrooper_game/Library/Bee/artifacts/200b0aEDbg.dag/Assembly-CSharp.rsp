@@ -392,6 +392,7 @@
 "Assets/Scripts/Presenter/LevelFail.cs"
 "Assets/Scripts/Presenter/LevelWin.cs"
 "Assets/Scripts/Presenter/Menu.cs"
+"Assets/Scripts/Presenter/Plane.cs"
 "Assets/Scripts/Presenter/Presenter.cs"
 "Assets/Starter Assets/TutorialInfo/Scripts/Readme.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
