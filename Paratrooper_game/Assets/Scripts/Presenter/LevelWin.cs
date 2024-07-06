@@ -6,18 +6,29 @@ using UnityEngine.SceneManagement;
 
 public class LevelWin  : MonoBehaviour, ILevelEnd
 {
-    [SerializeField] private GameObject nextLevelButton;
     [SerializeField] private TextMeshProUGUI levelText;
+    [SerializeField] private TextMeshProUGUI buttonText;
+    
+    private bool _gameEnded = false;
+    
     public void OnClick()
     {
-        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        if (_gameEnded)
+        {
+            Application.Quit();
+        }
+        else
+        {
+            SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        }
     }
 
     public void SetData(int currentLevel, int maxLevel)
     {
         if (currentLevel > maxLevel)
         {
-            nextLevelButton.SetActive(false);
+            _gameEnded = true;
+            buttonText.text = "Exit Game";
             levelText.text = "Game Completed!";
         } 
     }

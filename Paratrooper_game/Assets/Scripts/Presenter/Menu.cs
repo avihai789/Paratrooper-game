@@ -16,6 +16,11 @@ public class Menu : MonoBehaviour
     {
         LoadGameScene();
     }
+    
+    public void ExitGame()
+    {
+        Application.Quit();
+    }
 
     private void LoadGameScene()
     {

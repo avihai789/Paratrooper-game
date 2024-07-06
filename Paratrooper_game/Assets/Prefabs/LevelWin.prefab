@@ -90,8 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbcc79673d1e84629bc66a0707565993, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextLevelButton: {fileID: 3121860714307787807}
   levelText: {fileID: 3671969872158325144}
+  buttonText: {fileID: 4318133752629847303}
 --- !u!1 &826875078187233076
 GameObject:
   m_ObjectHideFlags: 0
