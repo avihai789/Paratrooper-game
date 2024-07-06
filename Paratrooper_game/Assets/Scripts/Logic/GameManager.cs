@@ -1,9 +1,6 @@
-using System;
 using Paratrooper.Config;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {

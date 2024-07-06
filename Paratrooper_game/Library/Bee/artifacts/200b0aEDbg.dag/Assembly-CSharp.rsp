@@ -386,6 +386,7 @@
 "Assets/Scripts/Logic/GameManager.cs"
 "Assets/Scripts/Logic/Settings.cs"
 "Assets/Scripts/Logic/TimerLogic.cs"
+"Assets/Scripts/Logic/ViewSwitcher.cs"
 "Assets/Scripts/Presenter/Coin.cs"
 "Assets/Scripts/Presenter/ILevelEnd.cs"
 "Assets/Scripts/Presenter/LevelEnd.cs"

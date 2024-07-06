@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using Cinemachine;
-using Paratrooper.Config;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -11,12 +10,10 @@ public class Presenter : MonoBehaviour
     [SerializeField] private Plane _plane;
     [SerializeField] private Coin _coinPrefab;
     [SerializeField] private Terrain _terrain;
-    [SerializeField] private GameObject _player;
     [SerializeField] private Transform coinsParent;
     [SerializeField] private TextMeshProUGUI _coinsText;
     [SerializeField] private TextMeshProUGUI _timerText;
-    [SerializeField] private Transform _playerCameraRoot;
-    [SerializeField] private CinemachineVirtualCamera _playerCamera;
+    [SerializeField] private ViewSwitcher _viewSwitcher;
 
     private List<Coin> _coinsList;
 
@@ -31,9 +28,7 @@ public class Presenter : MonoBehaviour
     private void SpawnPlayer()
     {
         _plane.SpawnPlayer -= SpawnPlayer;
-        _player.SetActive(true);
-        _player.transform.position = _plane.transform.position;
-        _playerCamera.Follow = _playerCameraRoot;
+        _viewSwitcher.SpawnPlayer(_plane.transform.position);
     }
 
     public void SpawnCoins(int coinsToSpawn)
