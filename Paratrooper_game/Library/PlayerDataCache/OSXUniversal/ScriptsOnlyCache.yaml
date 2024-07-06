@@ -7,8 +7,10 @@ ScriptsOnlyBuild:
     - LevelFail
     - LevelWin
     - Menu
+    - Plane
     - Presenter
     - Settings
+    - ViewSwitcher
     Cinemachine.dll:
     - Cinemachine.Cinemachine3rdPersonFollow
     - Cinemachine.CinemachineBasicMultiChannelPerlin
@@ -19,7 +21,6 @@ ScriptsOnlyBuild:
     DOTween.dll:
     - DG.Tweening.Core.DOTweenSettings
     Unity.InputSystem.dll:
-    - UnityEngine.InputSystem.Editor.InputActionEditorWindow
     - UnityEngine.InputSystem.InputActionAsset
     - UnityEngine.InputSystem.InputActionReference
     - UnityEngine.InputSystem.InputSettings
@@ -78,6 +79,7 @@ ScriptsOnlyBuild:
     - UnityEditor.ShaderGraph.ShaderGraphProjectSettings
     Unity.StarterAssets.dll:
     - BasicRigidBodyPush
+    - StarterAssets.FirstPersonController
     - StarterAssets.StarterAssetsInputs
     - StarterAssets.ThirdPersonController
     Unity.TextMeshPro:
@@ -95,8 +97,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -144,10 +148,12 @@ ScriptsOnlyBuild:
     - UnityEngine.InputSystem.InputBinding
     - UnityEngine.InputSystem.InputControlScheme
     - UnityEngine.InputSystem.InputControlScheme/DeviceRequirement
+    - UnityEngine.InputSystem.InputSettings/iOSSettings
     - UnityEngine.InputSystem.PlayerInput/ActionEvent
     - UnityEngine.InputSystem.PlayerInput/ControlsChangedEvent
     - UnityEngine.InputSystem.PlayerInput/DeviceLostEvent
     - UnityEngine.InputSystem.PlayerInput/DeviceRegainedEvent
+    - UnityEngine.InputSystem.iOS.PrivacyDataUsage
     Unity.RenderPipelines.Core.Runtime:
     - UnityEngine.Rendering.UI.DebugUIPrefabBundle
     Unity.RenderPipelines.Universal.Runtime:
@@ -198,6 +204,9 @@ ScriptsOnlyBuild:
   methodsToPreserve:
   - assembly: Assembly-CSharp
     fullTypeName: Menu
+    methodName: ExitGame
+  - assembly: Assembly-CSharp
+    fullTypeName: Menu
     methodName: StartGame
   - assembly: Unity.RenderPipelines.Core.Runtime
     fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerUIntField
@@ -239,10 +248,10 @@ ScriptsOnlyBuild:
     fullTypeName: UnityEngine.Rendering.UI.DebugUIHandlerPanel
     methodName: ResetDebugManager
   - assembly: Assembly-CSharp
-    fullTypeName: LevelFail
+    fullTypeName: LevelWin
     methodName: OnClick
   - assembly: Assembly-CSharp
-    fullTypeName: LevelWin
+    fullTypeName: LevelFail
     methodName: OnClick
   sceneClasses:
     Assets/Scenes/GameScene.unity:
@@ -265,6 +274,8 @@ ScriptsOnlyBuild:
     - Class: 48
       Script: {instanceID: 0}
     - Class: 54
+      Script: {instanceID: 0}
+    - Class: 64
       Script: {instanceID: 0}
     - Class: 65
       Script: {instanceID: 0}
@@ -293,8 +304,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 5790}
     - Class: 114
-      Script: {instanceID: 6368}
-    - Class: 114
       Script: {instanceID: 6524}
     - Class: 114
       Script: {instanceID: 6876}
@@ -302,8 +311,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 7368}
     - Class: 114
       Script: {instanceID: 7620}
-    - Class: 114
-      Script: {instanceID: 8468}
     - Class: 114
       Script: {instanceID: 8526}
     - Class: 114
@@ -323,17 +330,21 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11120}
     - Class: 114
-      Script: {instanceID: 12418}
-    - Class: 114
       Script: {instanceID: 37878}
     - Class: 114
       Script: {instanceID: 37882}
+    - Class: 114
+      Script: {instanceID: 37886}
     - Class: 114
       Script: {instanceID: 37890}
     - Class: 114
       Script: {instanceID: 48322}
     - Class: 114
       Script: {instanceID: 48330}
+    - Class: 114
+      Script: {instanceID: 69862}
+    - Class: 114
+      Script: {instanceID: 86600}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -2673,7 +2684,7 @@ ScriptsOnlyBuild:
     className: VirtualInput
   - hash:
       serializedVersion: 2
-      Hash: 253ac698dd0f15cb6f2fc47184de643b
+      Hash: b73d14924ef9c34e583b5b7f440ce9d7
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Presenter
@@ -2709,7 +2720,7 @@ ScriptsOnlyBuild:
     className: CoinsLogic
   - hash:
       serializedVersion: 2
-      Hash: 96e31569db43bcca057b38c6e5bc3d7c
+      Hash: 15471a4e8bc70c6e05cdb20a1f8f3bde
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: LevelWin
@@ -2719,6 +2730,18 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: LevelEnd
+  - hash:
+      serializedVersion: 2
+      Hash: 5770fc7b3995e1d4c141286b9030cb17
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Plane
+  - hash:
+      serializedVersion: 2
+      Hash: 1afd972f2d9157ab24acf5a63ae93a79
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: ViewSwitcher
   platform: 2
   scenePathNames:
   - Assets/Scenes/MainMenu.unity
