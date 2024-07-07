@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class ViewSwitcher : MonoBehaviour
 {
+    [SerializeField] private GameObject _player;
     [SerializeField] private Transform _firstPersonCameraRoot;
     [SerializeField] private Transform _thirdPersonCameraRoot;
-    [SerializeField] private GameObject _player;
     [SerializeField] private CinemachineVirtualCamera _playerCamera;
 
     public void SpawnPlayer(Vector3 position)

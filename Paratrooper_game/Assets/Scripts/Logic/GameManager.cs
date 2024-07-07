@@ -12,8 +12,8 @@ public class GameManager : MonoBehaviour
 
     private int _currentLevel;
 
-
     public const int MAX_LEVEL = 2;
+    private const int ANIMATION_TIME = 6;
 
     public static GameManager Instance;
 
@@ -39,13 +39,13 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        _timer.Update(Time.deltaTime);
+        _timer?.Update(Time.deltaTime);
     }
 
     private void StartLevel(Config.LevelData currentLevelData)
     {
         InitCoins(currentLevelData);
-        InitTimer(currentLevelData.time);
+        InitTimer(currentLevelData.time + ANIMATION_TIME);
     }
 
     private void InitTimer(int time)
@@ -75,7 +75,6 @@ public class GameManager : MonoBehaviour
         _presenter.CoinSpawned += CoinSpawned;
         _presenter.SpawnCoins(coinsToSpawn);
         _presenter.CoinSpawned -= CoinSpawned;
-        
     }
 
     private void CoinSpawned(Coin coin)
