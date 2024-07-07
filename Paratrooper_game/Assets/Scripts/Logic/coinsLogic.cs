@@ -6,7 +6,7 @@ using UnityEngine;
 namespace Paratrooper.Logic
 {
     // This class is used to control the coins logic only
-    public class CoinsLogic : MonoBehaviour
+    public class CoinsLogic
     {
         private int _coinsToCollect;
         private int _coinsCollected;
@@ -25,9 +25,8 @@ namespace Paratrooper.Logic
             _coinsToCollect = coinsToCollect;
         }
 
-        public void CollectCoin(Coin coin)
+        public void CollectCoin()
         {
-            Destroy(coin.gameObject);
             _coinsCollected++;
             UpdateCoinsCollectedAmount?.Invoke(_coinsCollected, _coinsToCollect);
             if (CheckIfAllCoinsCollected())

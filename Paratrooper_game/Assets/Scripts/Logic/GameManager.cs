@@ -104,7 +104,8 @@ namespace Paratrooper.Logic
 
         private void CoinCollected(Coin coin)
         {
-            _coinsLogic.CollectCoin(coin);
+            _coinsLogic.CollectCoin();
+            Destroy(coin.gameObject);
         }
 
         private void LevelEnd(bool isLevelWon)

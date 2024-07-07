@@ -9,7 +9,7 @@ namespace Paratrooper.Presenter
     {
         [SerializeField] private float spinSpeed;
         
-        Tween _tween;
+        private Tween _tween;
 
         public event Action<Coin> CoinCollected;
 
@@ -29,9 +29,13 @@ namespace Paratrooper.Presenter
         {
             if (other.CompareTag("Player"))
             {
-                _tween.Kill();
                 CoinCollected?.Invoke(this);
             }
+        }
+        
+        private void OnDestroy()
+        {
+            _tween.Kill();
         }
     }
 }
