@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         _currentLevel = _settings.currentLevel;
+        CheckLevelData();
         StartLevel(_settings.Config.levelsData[_currentLevel - 1]);
     }
 
@@ -49,6 +50,15 @@ public class GameManager : MonoBehaviour
     {
         InitCoins(currentLevelData);
         InitTimer(currentLevelData.time + ANIMATION_TIME);
+    }
+
+    private void CheckLevelData()
+    {
+        if (_settings.currentLevel > _settings.Config.levelsData.Length)
+        {
+            _settings.currentLevel = 1;
+            _currentLevel = 1;
+        }
     }
 
     private void InitTimer(int time)
