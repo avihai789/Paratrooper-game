@@ -2,26 +2,29 @@ using System;
 using DG.Tweening;
 using UnityEngine;
 
-public class Plane : MonoBehaviour
+namespace Paratrooper.Presenter
 {
-    public event Action SpawnPlayer;
-    
-    void Start()
+    public class Plane : MonoBehaviour
     {
-        Fly();
-    }
+        public event Action SpawnPlayer;
 
-    private void Fly()
-    {
-        transform.DOMove(new Vector3(40, 30, 50), 4).SetEase(Ease.Linear).onComplete += () =>
+        void Start()
         {
-            FlySecondHalf();
-            SpawnPlayer?.Invoke();
-        };
-    }
-    
-    private void FlySecondHalf()
-    {
-        transform.DOMove(new Vector3(40, 30, 100), 4).onComplete += () => { Destroy(gameObject); };
+            Fly();
+        }
+
+        private void Fly()
+        {
+            transform.DOMove(new Vector3(40, 30, 50), 4).SetEase(Ease.Linear).onComplete += () =>
+            {
+                FlySecondHalf();
+                SpawnPlayer?.Invoke();
+            };
+        }
+
+        private void FlySecondHalf()
+        {
+            transform.DOMove(new Vector3(40, 30, 100), 4).onComplete += () => { Destroy(gameObject); };
+        }
     }
 }

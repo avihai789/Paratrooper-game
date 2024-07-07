@@ -1,35 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelWin  : MonoBehaviour, ILevelEnd
+namespace Paratrooper.Presenter
 {
-    [SerializeField] private TextMeshProUGUI levelText;
-    [SerializeField] private TextMeshProUGUI buttonText;
-    
-    private bool _gameEnded = false;
-    
-    public void OnClick()
+    public class LevelWin : MonoBehaviour, ILevelEnd
     {
-        if (_gameEnded)
-        {
-            Application.Quit();
-        }
-        else
-        {
-            SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
-        }
-    }
+        [SerializeField] private TextMeshProUGUI levelText;
+        [SerializeField] private TextMeshProUGUI buttonText;
 
-    public void SetData(int currentLevel, int maxLevel)
-    {
-        if (currentLevel > maxLevel)
+        private bool _gameEnded = false;
+
+        public void OnClick()
         {
-            _gameEnded = true;
-            buttonText.text = "Exit Game";
-            levelText.text = "Game Completed!";
-        } 
+            if (_gameEnded)
+            {
+                Application.Quit();
+            }
+            else
+            {
+                SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+            }
+        }
+
+        public void SetData(int currentLevel, int maxLevel)
+        {
+            if (currentLevel > maxLevel)
+            {
+                _gameEnded = true;
+                buttonText.text = "Exit Game";
+                levelText.text = "Game Completed!";
+            }
+        }
     }
 }

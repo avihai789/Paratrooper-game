@@ -9,10 +9,10 @@ namespace Paratrooper.Config
         
         public Config LoadConfig()
         {
-            string path = "Assets/Scripts/Config/config.json";
+            const string path = "Assets/Scripts/Config/config.json";
             if (File.Exists(path))
             {
-                string json = File.ReadAllText(path);
+                var json = File.ReadAllText(path);
                 _loadedConfig = JsonUtility.FromJson<Config>(json);
             }
             else

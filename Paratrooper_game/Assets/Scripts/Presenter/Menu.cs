@@ -3,40 +3,43 @@ using Paratrooper.Config;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Menu : MonoBehaviour
+namespace Paratrooper.Presenter
 {
-    [SerializeField] private Settings _settings;
+    public class Menu : MonoBehaviour
+    {
+        [SerializeField] private Settings _settings;
 
-    private void Start()
-    {
-        LoadConfig();
-    }
-
-    public void StartGame()
-    {
-        LoadGameScene();
-    }
-    
-    public void ExitGame()
-    {
-        Application.Quit();
-    }
-
-    private void LoadGameScene()
-    {
-        SceneManager.LoadSceneAsync("GameScene", LoadSceneMode.Single);
-    }
-    
-    private void LoadConfig()
-    {
-        var config = new ConfigLoader().LoadConfig();
-        if (config != null)
+        private void Start()
         {
-            _settings.Config = config;
+            LoadConfig();
         }
-        else
+
+        public void StartGame()
         {
-            throw new Exception("Config not loaded");
+            LoadGameScene();
+        }
+
+        public void ExitGame()
+        {
+            Application.Quit();
+        }
+
+        private void LoadGameScene()
+        {
+            SceneManager.LoadSceneAsync("GameScene", LoadSceneMode.Single);
+        }
+
+        private void LoadConfig()
+        {
+            var config = new ConfigLoader().LoadConfig();
+            if (config != null)
+            {
+                _settings.Config = config;
+            }
+            else
+            {
+                throw new Exception("Config not loaded");
+            }
         }
     }
 }

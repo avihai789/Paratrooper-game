@@ -1,39 +1,43 @@
 using System;
-using Paratrooper.Config;
+using Paratrooper.Logic;
+using Paratrooper.Presenter;
 using UnityEngine;
 
-public class CoinsLogic : MonoBehaviour
+namespace Paratrooper.Logic
 {
-    private int _coinsToCollect;
-    private int _coinsCollected;
-    
-    public event Action<int, int> UpdateCoinsCollectedAmount;
-    public event Action<bool> AllCoinsCollected;
-    public void InitCoins(Config.LevelData currentLevelData)
+    public class CoinsLogic : MonoBehaviour
     {
-        SetCoinsToCollect(currentLevelData.coinsToCollect);
-        UpdateCoinsCollectedAmount?.Invoke(_coinsCollected, _coinsToCollect);
-    }
-    
-    private void SetCoinsToCollect(int coinsToCollect)
-    {
-        _coinsToCollect = coinsToCollect;
-    }
-    
-    public void CollectCoin(Coin coin)
-    {
-        Destroy(coin.gameObject);
-        _coinsCollected++;
-        UpdateCoinsCollectedAmount?.Invoke(_coinsCollected, _coinsToCollect);
-        if (CheckIfAllCoinsCollected())
+        private int _coinsToCollect;
+        private int _coinsCollected;
+
+        public event Action<int, int> UpdateCoinsCollectedAmount;
+        public event Action<bool> AllCoinsCollected;
+
+        public void InitCoins(Config.Config.LevelData currentLevelData)
         {
-            AllCoinsCollected?.Invoke(true);
+            SetCoinsToCollect(currentLevelData.coinsToCollect);
+            UpdateCoinsCollectedAmount?.Invoke(_coinsCollected, _coinsToCollect);
+        }
+
+        private void SetCoinsToCollect(int coinsToCollect)
+        {
+            _coinsToCollect = coinsToCollect;
+        }
+
+        public void CollectCoin(Coin coin)
+        {
+            Destroy(coin.gameObject);
+            _coinsCollected++;
+            UpdateCoinsCollectedAmount?.Invoke(_coinsCollected, _coinsToCollect);
+            if (CheckIfAllCoinsCollected())
+            {
+                AllCoinsCollected?.Invoke(true);
+            }
+        }
+
+        private bool CheckIfAllCoinsCollected()
+        {
+            return _coinsCollected == _coinsToCollect;
         }
     }
-    
-    private bool CheckIfAllCoinsCollected()
-    {
-        return _coinsCollected == _coinsToCollect;
-    }
-
 }

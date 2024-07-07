@@ -1,8 +1,8 @@
 
-
-using UnityEngine;
-
-public interface ILevelEnd
+namespace Paratrooper.Presenter
 {
-    public void OnClick(); 
+    public interface ILevelEnd
+    {
+        public void OnClick();
+    }
 }

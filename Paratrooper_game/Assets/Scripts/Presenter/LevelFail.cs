@@ -1,12 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LevelFail  : MonoBehaviour, ILevelEnd
+
+namespace Paratrooper.Presenter
 {
-    public void OnClick()
+    public class LevelFail : MonoBehaviour, ILevelEnd
     {
-        SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        public void OnClick()
+        {
+            SceneManager.LoadScene("GameScene", LoadSceneMode.Single);
+        }
     }
 }
