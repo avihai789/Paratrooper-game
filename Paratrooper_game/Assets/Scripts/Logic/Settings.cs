@@ -9,4 +9,6 @@ public class Settings : ScriptableObject
     public int currentLevel = 1;
     
     public bool isLevelWon = false;
+
+    public ViewSwitcher.ViewState viewState;
 }

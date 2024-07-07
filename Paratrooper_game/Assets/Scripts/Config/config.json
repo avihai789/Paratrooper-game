@@ -2,7 +2,7 @@
     "levelsData": [
         {
             "levelName": "1",
-            "coinsToSpawn": 200,
+            "coinsToSpawn": 100,
             "coinsToCollect": 15,
             "time": 60
         },

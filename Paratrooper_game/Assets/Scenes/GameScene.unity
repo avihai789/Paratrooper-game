@@ -884,6 +884,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5db9b36f1415a4da0b3ba3eb8b7b2dcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _settings: {fileID: 11400000, guid: c076afb04077641b2909057911d09de9, type: 2}
   _player: {fileID: 1059925553}
   _firstPersonCameraRoot: {fileID: 1026298253}
   _thirdPersonCameraRoot: {fileID: 1278149569}
