@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Cinemachine;
 using TMPro;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -15,14 +14,19 @@ public class Presenter : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _timerText;
     [SerializeField] private ViewSwitcher _viewSwitcher;
 
+    private GameManager _gameManager;
+    
     private List<Coin> _coinsList;
-
-    public event Action<Coin> CoinSpawned;
+    
 
     private void Start()
     {
+        _gameManager = GameManager.Instance;
         _coinsList = new List<Coin>();
         _plane.SpawnPlayer += SpawnPlayer;
+        _gameManager.SpawnCoin += SpawnCoin;
+        _gameManager.TimeChanged += SetTimerText;
+        _gameManager.UpdateCoinsCollectedAmount += SetCoinsText;
     }
 
     private void SpawnPlayer()
@@ -31,25 +35,17 @@ public class Presenter : MonoBehaviour
         _viewSwitcher.SpawnPlayer(_plane.transform.position);
     }
 
-    public void SpawnCoins(int coinsToSpawn)
-    {
-        for (var i = 0; i < coinsToSpawn; i++)
-        {
-            SpawnCoin();
-        }
-    }
-
-    public void SetCoinsText(int coinsCollected, int coinstoCollect)
+    private void SetCoinsText(int coinsCollected, int coinstoCollect)
     {
         _coinsText.text = $"{coinsCollected}/{coinstoCollect}";
     }
     
-    public void SetTimerText(float time)
+    private void SetTimerText(float time)
     {
         _timerText.text = time.ToString("F2");
     }
 
-    public void SpawnCoin()
+    private void SpawnCoin()
     {
         float x = Random.Range(0, _terrain.terrainData.size.x);
         float z = Random.Range(0, _terrain.terrainData.size.z);
@@ -60,8 +56,15 @@ public class Presenter : MonoBehaviour
 
         Vector3 spawnPosition = new Vector3(x, y, z);
         var coin = Instantiate(_coinPrefab, spawnPosition, Quaternion.identity, coinsParent);
-        CoinSpawned?.Invoke(coin);
+        _gameManager.CoinSpawned(coin);
 
         _coinsList.Add(coin);
+    }
+
+    private void OnDestroy()
+    {
+        _gameManager.SpawnCoin -= SpawnCoin;
+        _gameManager.TimeChanged -= SetTimerText;
+        _gameManager.UpdateCoinsCollectedAmount -= SetCoinsText;
     }
 }

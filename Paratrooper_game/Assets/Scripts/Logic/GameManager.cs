@@ -1,3 +1,4 @@
+using System;
 using Paratrooper.Config;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,17 +6,19 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private Settings _settings;
-    [SerializeField] private Presenter _presenter;
 
     private TimerLogic _timer;
     private CoinsLogic _coinsLogic;
 
     private int _currentLevel;
 
-    public const int MAX_LEVEL = 2;
     private const int ANIMATION_TIME = 6;
 
     public static GameManager Instance;
+    
+    public event Action SpawnCoin;
+    public event Action<float> TimeChanged;
+    public event Action<int, int> UpdateCoinsCollectedAmount;
 
 
     private void Awake()
@@ -52,7 +55,7 @@ public class GameManager : MonoBehaviour
     {
         _timer = new TimerLogic(time);
         _timer.TimerEnd += TimerEnd;
-        _timer.TimerChanged += (time) => _presenter.SetTimerText(time);
+        _timer.TimerChanged += (time) => TimeChanged?.Invoke(time);
     }
 
     private void TimerEnd()
@@ -64,7 +67,7 @@ public class GameManager : MonoBehaviour
     {
         _coinsLogic = new CoinsLogic();
         _coinsLogic.UpdateCoinsCollectedAmount += (coinsCollected, coinsToCollect) =>
-            _presenter.SetCoinsText(coinsCollected, coinsToCollect);
+            UpdateCoinsCollectedAmount?.Invoke(coinsCollected, coinsToCollect);
         _coinsLogic.AllCoinsCollected += LevelEnd;
         _coinsLogic.InitCoins(currentLevelData);
         SpawnCoins(currentLevelData.coinsToSpawn);
@@ -72,12 +75,13 @@ public class GameManager : MonoBehaviour
     
     private void SpawnCoins(int coinsToSpawn)
     {
-        _presenter.CoinSpawned += CoinSpawned;
-        _presenter.SpawnCoins(coinsToSpawn);
-        _presenter.CoinSpawned -= CoinSpawned;
+        for (var i = 0; i < coinsToSpawn; i++)
+        {
+            SpawnCoin?.Invoke();
+        }
     }
 
-    private void CoinSpawned(Coin coin)
+    public void CoinSpawned(Coin coin)
     {
         coin.CoinCollected += CoinCollected;
     }
@@ -98,10 +102,18 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            _timer.TimerEnd -= TimerEnd;
-            _timer.TimerChanged -= (time) => _presenter?.SetTimerText(time);
             _settings.isLevelWon = false;
             SceneManager.LoadScene("LevelEnd", LoadSceneMode.Single);
         }
+    }
+    
+    private void OnDestroy()
+    {
+        _timer.TimerEnd -= TimerEnd;
+        _timer.TimerChanged -= (time) => TimeChanged?.Invoke(time);
+        
+        _coinsLogic.AllCoinsCollected -= LevelEnd;
+        _coinsLogic.UpdateCoinsCollectedAmount -= (coinsCollected, coinsToCollect) =>
+            UpdateCoinsCollectedAmount?.Invoke(coinsCollected, coinsToCollect);
     }
 }
