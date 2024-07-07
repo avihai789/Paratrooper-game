@@ -1,10 +1,10 @@
 using Cinemachine;
 using StarterAssets;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace Paratrooper.Presenter
 {
+    // This class is used to control the camera mode
     public class ViewSwitcher : MonoBehaviour
     {
         public enum ViewState

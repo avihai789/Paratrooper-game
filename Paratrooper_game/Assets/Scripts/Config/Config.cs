@@ -1,7 +1,9 @@
 using System;
 
+
 namespace Paratrooper.Config
 {
+    // This class is used to store the data of the levels
     [Serializable]
     public class Config
     {

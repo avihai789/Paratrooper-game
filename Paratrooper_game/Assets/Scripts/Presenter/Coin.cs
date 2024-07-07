@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Paratrooper.Presenter
 {
+    // This class is used to control the coin view
     public class Coin : MonoBehaviour
     {
         [SerializeField] private float spinSpeed;

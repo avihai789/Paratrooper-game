@@ -14,14 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Config:
     levelsData:
-    - levelName: 1
+    - levelName: Level 1
       coinsToSpawn: 100
-      coinsToCollect: 1
-      time: 10
-    - levelName: 2
+      coinsToCollect: 15
+      time: 60
+    - levelName: Level 2
       coinsToSpawn: 200
-      coinsToCollect: 1
+      coinsToCollect: 50
       time: 90
-  currentLevel: 3
+  currentLevel: 1
   isLevelWon: 1
   viewState: 1

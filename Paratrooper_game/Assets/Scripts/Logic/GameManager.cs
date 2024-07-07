@@ -2,10 +2,10 @@ using System;
 using Paratrooper.Presenter;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.Serialization;
 
 namespace Paratrooper.Logic
 {
+    // This class is used to control the game logic
     public class GameManager : MonoBehaviour
     {
         [SerializeField] private Settings settings;

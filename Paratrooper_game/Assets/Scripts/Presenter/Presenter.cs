@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace Paratrooper.Presenter
 {
+    // This class is used to control the game scene view
     public class Presenter : MonoBehaviour
     {
         [SerializeField] private Plane plane;

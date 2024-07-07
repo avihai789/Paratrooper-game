@@ -5,6 +5,7 @@ using UnityEngine;
 
 namespace Paratrooper.Logic
 {
+    // This class is used to control the coins logic only
     public class CoinsLogic : MonoBehaviour
     {
         private int _coinsToCollect;

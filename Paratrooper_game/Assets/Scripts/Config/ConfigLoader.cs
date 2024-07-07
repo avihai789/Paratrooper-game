@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Paratrooper.Config
 {
+    // This class is used to load the data from the config.json file
     public class ConfigLoader
     {
         private Config _loadedConfig;

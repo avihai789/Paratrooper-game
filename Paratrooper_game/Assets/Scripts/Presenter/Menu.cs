@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 namespace Paratrooper.Presenter
 {
+    // This class is used to control the main menu
     public class Menu : MonoBehaviour
     {
         [SerializeField] private Settings settings;

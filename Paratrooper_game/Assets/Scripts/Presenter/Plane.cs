@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Paratrooper.Presenter
 {
+    // This class is used to control the plane
     public class Plane : MonoBehaviour
     {
         public event Action SpawnPlayer;

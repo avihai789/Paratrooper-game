@@ -1,6 +1,7 @@
 using Paratrooper.Presenter;
 using UnityEngine;
 
+// This script is used to control the level end
 public class LevelEnd : MonoBehaviour
 {
     [SerializeField] private LevelWin levelWin;

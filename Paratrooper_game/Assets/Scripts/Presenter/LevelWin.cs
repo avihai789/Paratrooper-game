@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 
 namespace Paratrooper.Presenter
 {
+    // This class is used to control the level win prefab
     public class LevelWin : MonoBehaviour, ILevelEnd
     {
         [SerializeField] private TextMeshProUGUI levelText;

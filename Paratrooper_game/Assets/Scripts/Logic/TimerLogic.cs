@@ -2,6 +2,7 @@ using System;
 
 namespace Paratrooper.Logic
 {
+    // This class is used to manage the timer logic only
     public class TimerLogic
     {
         private bool _isEnabled = false;
