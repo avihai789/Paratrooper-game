@@ -2,12 +2,13 @@ using System;
 using Paratrooper.Presenter;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Serialization;
 
 namespace Paratrooper.Logic
 {
     public class GameManager : MonoBehaviour
     {
-        [SerializeField] private Settings _settings;
+        [SerializeField] private Settings settings;
 
         private TimerLogic _timer;
         private CoinsLogic _coinsLogic;
@@ -20,6 +21,8 @@ namespace Paratrooper.Logic
 
         public event Action SpawnCoin;
         public event Action<float> TimeChanged;
+        
+        public event Action<string> LevelStarted;
         public event Action<int, int> UpdateCoinsCollectedAmount;
 
 
@@ -38,9 +41,9 @@ namespace Paratrooper.Logic
 
         private void Start()
         {
-            _currentLevel = _settings.currentLevel;
+            _currentLevel = settings.currentLevel;
             CheckLevelData();
-            StartLevel(_settings.Config.levelsData[_currentLevel - 1]);
+            StartLevel(settings.Config.levelsData[_currentLevel - 1]);
         }
 
         private void Update()
@@ -52,13 +55,14 @@ namespace Paratrooper.Logic
         {
             InitCoins(currentLevelData);
             InitTimer(currentLevelData.time + ANIMATION_TIME);
+            LevelStarted?.Invoke(currentLevelData.levelName);
         }
 
         private void CheckLevelData()
         {
-            if (_settings.currentLevel > _settings.Config.levelsData.Length)
+            if (settings.currentLevel > settings.Config.levelsData.Length)
             {
-                _settings.currentLevel = 1;
+                settings.currentLevel = 1;
                 _currentLevel = 1;
             }
         }
@@ -108,13 +112,13 @@ namespace Paratrooper.Logic
             _timer.StopTimer();
             if (isLevelWon)
             {
-                _settings.isLevelWon = true;
-                _settings.currentLevel++;
+                settings.isLevelWon = true;
+                settings.currentLevel++;
                 SceneManager.LoadSceneAsync("LevelEnd", LoadSceneMode.Single);
             }
             else
             {
-                _settings.isLevelWon = false;
+                settings.isLevelWon = false;
                 SceneManager.LoadScene("LevelEnd", LoadSceneMode.Single);
             }
         }

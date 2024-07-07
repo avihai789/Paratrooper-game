@@ -7,7 +7,7 @@ namespace Paratrooper.Presenter
 {
     public class Menu : MonoBehaviour
     {
-        [SerializeField] private Settings _settings;
+        [SerializeField] private Settings settings;
 
         private void Start()
         {
@@ -34,7 +34,7 @@ namespace Paratrooper.Presenter
             var config = new ConfigLoader().LoadConfig();
             if (config != null)
             {
-                _settings.Config = config;
+                settings.Config = config;
             }
             else
             {

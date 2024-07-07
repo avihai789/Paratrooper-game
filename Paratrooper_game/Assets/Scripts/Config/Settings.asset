@@ -16,12 +16,12 @@ MonoBehaviour:
     levelsData:
     - levelName: 1
       coinsToSpawn: 100
-      coinsToCollect: 15
-      time: 60
+      coinsToCollect: 1
+      time: 10
     - levelName: 2
       coinsToSpawn: 200
-      coinsToCollect: 50
+      coinsToCollect: 1
       time: 90
-  currentLevel: 1
-  isLevelWon: 0
+  currentLevel: 3
+  isLevelWon: 1
   viewState: 1

@@ -422,7 +422,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c548b0b855fd942b58f782816e7cb978, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _settings: {fileID: 11400000, guid: c076afb04077641b2909057911d09de9, type: 2}
+  settings: {fileID: 11400000, guid: c076afb04077641b2909057911d09de9, type: 2}
 --- !u!114 &1123574892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1174,8 +1174,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.000019073, y: 264.75552}
-  m_SizeDelta: {x: 926.0139, y: 529.5018}
+  m_AnchoredPosition: {x: 0.000019073, y: 271.07886}
+  m_SizeDelta: {x: 926.0139, y: 542.1484}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1841904202
 MonoBehaviour:
@@ -1199,7 +1199,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: '<size=100>Instructions:</size>
 
-    Collect all coins before the time
+    Collect all the coins before time
     runs out!
 
 

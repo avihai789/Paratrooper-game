@@ -7,6 +7,8 @@ namespace Paratrooper.Presenter
     public class Coin : MonoBehaviour
     {
         [SerializeField] private float spinSpeed;
+        
+        Tween _tween;
 
         public event Action<Coin> CoinCollected;
 
@@ -17,7 +19,7 @@ namespace Paratrooper.Presenter
 
         private void StartSpinning()
         {
-            transform.DORotate(new Vector3(360, 360, 360), 1 / (spinSpeed / 360f), RotateMode.FastBeyond360)
+            _tween = transform.DORotate(new Vector3(360, 360, 360), 1 / (spinSpeed / 360f), RotateMode.FastBeyond360)
                 .SetLoops(-1, LoopType.Incremental)
                 .SetEase(Ease.Linear);
         }
@@ -26,6 +28,7 @@ namespace Paratrooper.Presenter
         {
             if (other.CompareTag("Player"))
             {
+                _tween.Kill();
                 CoinCollected?.Invoke(this);
             }
         }
